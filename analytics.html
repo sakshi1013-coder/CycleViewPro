@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleView — Analytics & Trends</title>
+    <meta name="description" content="Deep-dive analytics for menstrual cycle trends, hormone correlations, and predictive insights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav id="main-nav" class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo" style="text-decoration:none">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="13" stroke="url(#lg1)" stroke-width="2"/>
+                    <circle cx="14" cy="14" r="6" fill="url(#lg1)"/>
+                    <defs><linearGradient id="lg1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#E8736A"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+                </svg>
+                <span class="logo-text">CycleView</span>
+            </a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-tab">Overview</a>
+            <a href="analytics.html" class="nav-tab active">Analytics</a>
+            <a href="history.html" class="nav-tab">History</a>
+        </div>
+        <div class="nav-right">
+            <button class="icon-btn" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="icon-btn" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-dot"></span>
+            </button>
+            <a href="doctor.html" class="avatar-small" id="btn-profile"><span>DR</span></a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <!-- Page Header -->
+        <div class="page-title-bar">
+            <div>
+                <h1 class="page-title">Analytics & Trends</h1>
+                <p class="page-subtitle">Multi-cycle analysis for Sarah J. Jenkins · Last 12 months</p>
+            </div>
+            <div class="page-actions">
+                <select class="select-input" id="analytics-range">
+                    <option>Last 6 Cycles</option>
+                    <option selected>Last 12 Months</option>
+                    <option>All Data</option>
+                </select>
+                <button class="btn-secondary" id="btn-export-analytics">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- KPI Summary Cards -->
+        <section class="kpi-row" id="analytics-kpis">
+            <div class="kpi-card glass-card">
+                <div class="kpi-icon-wrap" style="background: var(--follicular-bg); color: var(--follicular);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Avg Cycle Length</span>
+                    <span class="kpi-value">28.7 <small>days</small></span>
+                    <span class="kpi-change positive-change">↓ 0.3d from prior year</span>
+                </div>
+            </div>
+            <div class="kpi-card glass-card">
+                <div class="kpi-icon-wrap" style="background: var(--menstrual-bg); color: var(--menstrual);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Avg Period Duration</span>
+                    <span class="kpi-value">4.8 <small>days</small></span>
+                    <span class="kpi-change neutral-change">— Stable</span>
+                </div>
+            </div>
+            <div class="kpi-card glass-card">
+                <div class="kpi-icon-wrap" style="background: var(--ovulation-bg); color: var(--ovulation);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Ovulation Regularity</span>
+                    <span class="kpi-value">92<small>%</small></span>
+                    <span class="kpi-change positive-change">↑ High confidence</span>
+                </div>
+            </div>
+            <div class="kpi-card glass-card">
+                <div class="kpi-icon-wrap" style="background: var(--luteal-bg); color: var(--luteal);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Luteal Phase Avg</span>
+                    <span class="kpi-value">13.2 <small>days</small></span>
+                    <span class="kpi-change positive-change">Normal range</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Analytics Grid -->
+        <div class="analytics-grid">
+            <!-- Cycle Length Trend -->
+            <section class="glass-card analytics-wide" id="cycle-length-trend">
+                <div class="section-header">
+                    <div>
+                        <h2>Cycle Length Trend</h2>
+                        <span class="section-subtitle">12 consecutive cycles</span>
+                    </div>
+                    <div class="chart-controls">
+                        <span class="badge-info">Normal range: 21–35 days</span>
+                    </div>
+                </div>
+                <div class="chart-container" style="height: 280px;">
+                    <canvas id="cycle-trend-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- BBT Overlay (Multi-Cycle) -->
+            <section class="glass-card analytics-wide" id="bbt-overlay-section">
+                <div class="section-header">
+                    <div>
+                        <h2>BBT Multi-Cycle Overlay</h2>
+                        <span class="section-subtitle">Temperature patterns across 3 recent cycles</span>
+                    </div>
+                </div>
+                <div class="chart-container" style="height: 300px">
+                    <canvas id="bbt-overlay-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Symptom Correlation Heatmap -->
+            <section class="glass-card" id="symptom-correlation">
+                <div class="section-header">
+                    <h2>Symptom vs. Cycle Phase</h2>
+                    <span class="badge-ai">AI-Analyzed</span>
+                </div>
+                <div class="heatmap-grid" id="symptom-heatmap">
+                    <!-- Header Row -->
+                    <div class="hm-header"></div>
+                    <div class="hm-header">Menstrual</div>
+                    <div class="hm-header">Follicular</div>
+                    <div class="hm-header">Ovulation</div>
+                    <div class="hm-header">Luteal</div>
+                    <!-- Pain Row -->
+                    <div class="hm-label">Pain</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.6);" data-val="3.8">3.8</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.15);" data-val="0.8">0.8</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.45);" data-val="2.9">2.9</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.3);" data-val="1.7">1.7</div>
+                    <!-- Energy Row -->
+                    <div class="hm-label">Energy</div>
+                    <div class="hm-cell" style="background: rgba(16,185,129,0.2);" data-val="1.5">1.5</div>
+                    <div class="hm-cell" style="background: rgba(16,185,129,0.7);" data-val="4.2">4.2</div>
+                    <div class="hm-cell" style="background: rgba(16,185,129,0.5);" data-val="3.4">3.4</div>
+                    <div class="hm-cell" style="background: rgba(16,185,129,0.35);" data-val="2.3">2.3</div>
+                    <!-- Bleeding Row -->
+                    <div class="hm-label">Bleeding</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.65);" data-val="3.6">3.6</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.05);" data-val="0.1">0.1</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.05);" data-val="0.0">0.0</div>
+                    <div class="hm-cell" style="background: rgba(239,68,68,0.08);" data-val="0.3">0.3</div>
+                    <!-- Mood Row -->
+                    <div class="hm-label">Mood</div>
+                    <div class="hm-cell" style="background: rgba(139,92,246,0.3);" data-val="2.1">2.1</div>
+                    <div class="hm-cell" style="background: rgba(139,92,246,0.6);" data-val="4.0">4.0</div>
+                    <div class="hm-cell" style="background: rgba(139,92,246,0.5);" data-val="3.5">3.5</div>
+                    <div class="hm-cell" style="background: rgba(139,92,246,0.25);" data-val="1.8">1.8</div>
+                </div>
+                <p class="heatmap-note">Values represent average severity (0–5 scale) across all tracked cycles</p>
+            </section>
+
+            <!-- Hormone Pattern Analysis -->
+            <section class="glass-card" id="hormone-analysis">
+                <div class="section-header">
+                    <h2>Hormone Marker Pattern</h2>
+                    <span class="section-subtitle">LH surge timing across cycles</span>
+                </div>
+                <div class="chart-container" style="height:220px">
+                    <canvas id="lh-pattern-chart"></canvas>
+                </div>
+                <div class="hormone-stats">
+                    <div class="hormone-stat">
+                        <span class="hormone-stat-label">Earliest LH+</span>
+                        <span class="hormone-stat-value">CD 12</span>
+                    </div>
+                    <div class="hormone-stat">
+                        <span class="hormone-stat-label">Latest LH+</span>
+                        <span class="hormone-stat-value">CD 17</span>
+                    </div>
+                    <div class="hormone-stat">
+                        <span class="hormone-stat-label">Most Common</span>
+                        <span class="hormone-stat-value">CD 14–15</span>
+                    </div>
+                    <div class="hormone-stat">
+                        <span class="hormone-stat-label">Consistency</span>
+                        <span class="hormone-stat-value highlight-coral">High</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Predictive Insights -->
+            <section class="glass-card analytics-wide" id="predictions-section">
+                <div class="section-header">
+                    <h2>Predictive Analysis</h2>
+                    <span class="badge-ai">AI-Assisted</span>
+                </div>
+                <div class="prediction-cards">
+                    <div class="prediction-card">
+                        <div class="prediction-icon" style="background: var(--ovulation-bg); color: var(--ovulation);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <div class="prediction-content">
+                            <h3>Next Ovulation Window</h3>
+                            <span class="prediction-value">Nov 3 – Nov 6, 2025</span>
+                            <p>Based on BBT + LH correlation across 6 cycles. 92% prediction confidence.</p>
+                        </div>
+                        <span class="prediction-confidence high">92%</span>
+                    </div>
+                    <div class="prediction-card">
+                        <div class="prediction-icon" style="background: var(--menstrual-bg); color: var(--menstrual);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="prediction-content">
+                            <h3>Next Period Estimate</h3>
+                            <span class="prediction-value">Nov 17 – Nov 19, 2025</span>
+                            <p>Expected duration: 4–5 days. Based on 12-cycle moving average.</p>
+                        </div>
+                        <span class="prediction-confidence high">88%</span>
+                    </div>
+                    <div class="prediction-card">
+                        <div class="prediction-icon" style="background: var(--warning-bg); color: var(--warning);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="prediction-content">
+                            <h3>Cycle Irregularity Risk</h3>
+                            <span class="prediction-value">Low Risk</span>
+                            <p>CV of cycle length: 4.2%. Well within normal variation (<10%).</p>
+                        </div>
+                        <span class="prediction-confidence low-risk">Low</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="analytics.js"></script>
+</body>
+</html>

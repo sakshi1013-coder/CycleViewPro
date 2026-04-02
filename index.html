@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleView — Clinician Menstrual Cycle Dashboard</title>
+    <meta name="description" content="Clinical dashboard for visualizing menstrual cycle data including BBT, pain, bleeding, LH tests, and energy levels.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav id="main-nav" class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo" style="text-decoration:none">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="13" stroke="url(#logo-grad)" stroke-width="2"/>
+                    <circle cx="14" cy="14" r="6" fill="url(#logo-grad)"/>
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="28" y2="28">
+                            <stop stop-color="#E8736A"/>
+                            <stop offset="1" stop-color="#A78BFA"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">CycleView</span>
+            </a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-tab active" id="nav-overview">Overview</a>
+            <a href="analytics.html" class="nav-tab" id="nav-analytics">Analytics</a>
+            <a href="history.html" class="nav-tab" id="nav-history">History</a>
+        </div>
+        <div class="nav-right">
+            <button class="icon-btn" id="btn-search" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="icon-btn" id="btn-notifications" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-dot"></span>
+            </button>
+            <a href="doctor.html" class="avatar-small" id="btn-profile">
+                <span>DR</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <!-- Patient Header Bar -->
+        <section id="patient-header" class="patient-header">
+            <div class="patient-info-card glass-card">
+                <div class="patient-identity">
+                    <div class="patient-avatar">
+                        <span>SJ</span>
+                    </div>
+                    <div class="patient-details">
+                        <h1 class="patient-name">Sarah J. Jenkins</h1>
+                        <span class="patient-meta">Age 30 · ID: SJ081992 · G2P1</span>
+                    </div>
+                </div>
+                <div class="patient-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Cycle Day</span>
+                        <span class="stat-value highlight-coral">CD 16</span>
+                        <span class="stat-sub phase-badge ovulation">Ovulation</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">Last Period</span>
+                        <span class="stat-value">Oct 21</span>
+                        <span class="stat-sub">5 days · Normal</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">Next Period (Est.)</span>
+                        <span class="stat-value">Nov 18</span>
+                        <span class="stat-sub">In 13 days</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">Cycle Length</span>
+                        <span class="stat-value">28 days</span>
+                        <span class="stat-sub">Avg: 29 days (±1)</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">Predicted Ovulation</span>
+                        <span class="stat-value highlight-coral">Nov 3–6</span>
+                        <span class="stat-sub">Based on 6 cycles</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cycle Phase Timeline -->
+        <section id="cycle-timeline" class="cycle-timeline-section">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2>Cycle Phase Timeline</h2>
+                    <span class="badge-info">Current: CD16 — Ovulation Window</span>
+                </div>
+                <div class="timeline-track">
+                    <div class="phase menstrual" style="width: 17.8%">
+                        <span class="phase-label">Menstrual</span>
+                        <span class="phase-days">CD 1–5</span>
+                    </div>
+                    <div class="phase follicular" style="width: 28.6%">
+                        <span class="phase-label">Follicular</span>
+                        <span class="phase-days">CD 6–13</span>
+                    </div>
+                    <div class="phase ovulation-phase" style="width: 14.3%">
+                        <span class="phase-label">Ovulation</span>
+                        <span class="phase-days">CD 14–17</span>
+                        <div class="current-marker" style="left: 50%">
+                            <div class="marker-dot"></div>
+                            <span class="marker-label">CD16</span>
+                        </div>
+                    </div>
+                    <div class="phase luteal" style="width: 39.3%">
+                        <span class="phase-label">Luteal</span>
+                        <span class="phase-days">CD 18–28</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-grid">
+            <!-- BBT Chart (Primary) -->
+            <section id="bbt-chart-section" class="bbt-section glass-card">
+                <div class="section-header">
+                    <div>
+                        <h2>Basal Body Temperature (BBT)</h2>
+                        <span class="section-subtitle">Cycle Days 1–28 · Oct 21 – Nov 17</span>
+                    </div>
+                    <div class="chart-controls">
+                        <select id="bbt-cycle-select" class="select-input">
+                            <option>Current Cycle</option>
+                            <option>Previous Cycle</option>
+                            <option>3-Cycle Overlay</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-container bbt-chart-container">
+                    <canvas id="bbt-chart"></canvas>
+                </div>
+                <div class="bbt-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #E8736A"></span>
+                        <span>BBT Line</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: rgba(232,115,106,0.15)"></span>
+                        <span>Ovulation Window</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-line" style="background: #94A3B8"></span>
+                        <span>Coverline (36.5°C)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot pulse-dot" style="background: #F59E0B"></span>
+                        <span>LH Surge Detected</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Daily Symptoms Panel -->
+            <section id="symptoms-panel" class="symptoms-section glass-card">
+                <div class="section-header">
+                    <h2>Today's Symptoms</h2>
+                    <span class="badge-day">CD 16</span>
+                </div>
+                <div class="symptom-cards">
+                    <!-- Pain -->
+                    <div class="symptom-card" id="symptom-pain">
+                        <div class="symptom-icon pain-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                        </div>
+                        <div class="symptom-info">
+                            <span class="symptom-label">Pain Level</span>
+                            <div class="symptom-bar-track">
+                                <div class="symptom-bar pain-bar" style="width: 50%"></div>
+                            </div>
+                            <span class="symptom-value">Moderate (5/10)</span>
+                            <span class="symptom-note">Cramping · Lower abdomen</span>
+                        </div>
+                    </div>
+
+                    <!-- Energy -->
+                    <div class="symptom-card" id="symptom-energy">
+                        <div class="symptom-icon energy-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <div class="symptom-info">
+                            <span class="symptom-label">Energy Level</span>
+                            <div class="symptom-bar-track">
+                                <div class="symptom-bar energy-bar" style="width: 60%"></div>
+                            </div>
+                            <span class="symptom-value">Moderate (6/10)</span>
+                            <span class="symptom-note">Moderate energy level</span>
+                        </div>
+                    </div>
+
+                    <!-- Bleeding -->
+                    <div class="symptom-card" id="symptom-bleeding">
+                        <div class="symptom-icon bleeding-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <div class="symptom-info">
+                            <span class="symptom-label">Bleeding</span>
+                            <div class="symptom-bar-track">
+                                <div class="symptom-bar bleeding-bar" style="width: 0%"></div>
+                            </div>
+                            <span class="symptom-value">None</span>
+                            <span class="symptom-note">—</span>
+                        </div>
+                    </div>
+
+                    <!-- LH Test -->
+                    <div class="symptom-card" id="symptom-lh">
+                        <div class="symptom-icon lh-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <div class="symptom-info">
+                            <span class="symptom-label">LH Surge Test</span>
+                            <div class="lh-result negative">
+                                <span>Low</span>
+                            </div>
+                            <span class="symptom-note">Peak detected CD 13–14</span>
+                        </div>
+                    </div>
+
+                    <!-- Cervical Mucus -->
+                    <div class="symptom-card" id="symptom-mucus">
+                        <div class="symptom-icon mucus-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                        </div>
+                        <div class="symptom-info">
+                            <span class="symptom-label">Cervical Mucus</span>
+                            <span class="symptom-value mucus-ewcm">Egg-white (EWCM)</span>
+                            <span class="symptom-note">Peak fertility indicator</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pain Heatmap -->
+            <section id="pain-heatmap-section" class="pain-section glass-card">
+                <div class="section-header">
+                    <h2>Pain & Energy Trends</h2>
+                    <span class="section-subtitle">28-day heatmap view</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pain-energy-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Bleeding Pattern -->
+            <section id="bleeding-section" class="bleeding-section glass-card">
+                <div class="section-header">
+                    <h2>Bleeding Pattern</h2>
+                    <span class="section-subtitle">Flow intensity by cycle day</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="bleeding-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- LH Surge Timeline -->
+            <section id="lh-section" class="lh-section glass-card">
+                <div class="section-header">
+                    <h2>LH Surge Detection</h2>
+                    <span class="section-subtitle">Test results over cycle</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lh-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Multi-Cycle Comparison -->
+            <section id="cycle-comparison" class="comparison-section glass-card">
+                <div class="section-header">
+                    <h2>Cycle Comparison</h2>
+                    <span class="section-subtitle">Last 6 cycles</span>
+                </div>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <span class="comparison-label">Cycle Length</span>
+                        <div class="mini-chart-container">
+                            <canvas id="cycle-length-chart"></canvas>
+                        </div>
+                        <div class="comparison-stats">
+                            <span class="comp-avg">Avg: 29 days</span>
+                            <span class="comp-range">Range: 27–31</span>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <span class="comparison-label">Period Duration</span>
+                        <div class="mini-chart-container">
+                            <canvas id="period-duration-chart"></canvas>
+                        </div>
+                        <div class="comparison-stats">
+                            <span class="comp-avg">Avg: 5 days</span>
+                            <span class="comp-range">Range: 4–6</span>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <span class="comparison-label">Ovulation Day</span>
+                        <div class="mini-chart-container">
+                            <canvas id="ovulation-day-chart"></canvas>
+                        </div>
+                        <div class="comparison-stats">
+                            <span class="comp-avg">Avg: CD 15</span>
+                            <span class="comp-range">Range: CD 13–17</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clinical Insights -->
+            <section id="clinical-insights" class="insights-section glass-card">
+                <div class="section-header">
+                    <h2>Clinical Insights</h2>
+                    <span class="badge-ai">AI-Assisted</span>
+                </div>
+                <div class="insights-list">
+                    <div class="insight-item normal">
+                        <div class="insight-indicator"></div>
+                        <div class="insight-content">
+                            <strong>Regular Cycle Pattern</strong>
+                            <p>Cycle length within normal range (27–31 days) over 6 consecutive cycles. No irregularities detected.</p>
+                        </div>
+                    </div>
+                    <div class="insight-item attention">
+                        <div class="insight-indicator"></div>
+                        <div class="insight-content">
+                            <strong>BBT Shift Confirmed</strong>
+                            <p>Biphasic pattern observed — BBT dip to 36.2°C on CD 13 (nadir), then 0.5°C rise to 36.7°C by CD 16. Coverline at 36.5°C confirms ovulation.</p>
+                        </div>
+                    </div>
+                    <div class="insight-item positive">
+                        <div class="insight-indicator"></div>
+                        <div class="insight-content">
+                            <strong>LH Surge Aligned</strong>
+                            <p>LH Peak on CD 13–14 aligns with BBT nadir (36.2°C on CD 13). High confidence ovulation window: CD 13–15.</p>
+                        </div>
+                    </div>
+                    <div class="insight-item warning">
+                        <div class="insight-indicator"></div>
+                        <div class="insight-content">
+                            <strong>Pain–Energy Inverse Pattern</strong>
+                            <p>Clear inverse correlation: Pain peaks (9/10) during menstruation (CD 1–2) and pre-menstrual (CD 27–28) phases while energy drops to 2/10. Energy peaks (8/10) mid-follicular (CD 11–12). Pain rises again during ovulation (7/10 on CD 13–14).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

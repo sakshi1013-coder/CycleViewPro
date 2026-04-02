@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleView — Doctor Profile</title>
+    <meta name="description" content="Doctor profile, patient roster, schedule, and dashboard settings.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav id="main-nav" class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo" style="text-decoration:none">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="13" stroke="url(#lg3)" stroke-width="2"/>
+                    <circle cx="14" cy="14" r="6" fill="url(#lg3)"/>
+                    <defs><linearGradient id="lg3" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#E8736A"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+                </svg>
+                <span class="logo-text">CycleView</span>
+            </a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-tab">Overview</a>
+            <a href="analytics.html" class="nav-tab">Analytics</a>
+            <a href="history.html" class="nav-tab">History</a>
+        </div>
+        <div class="nav-right">
+            <button class="icon-btn" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="icon-btn" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-dot"></span>
+            </button>
+            <a href="doctor.html" class="avatar-small active-avatar"><span>DR</span></a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <!-- Doctor Profile Header -->
+        <section class="profile-hero glass-card" id="doctor-profile-header">
+            <div class="profile-hero-left">
+                <div class="profile-avatar-large">
+                    <span>RH</span>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Dr. Rebecca Hartley</h1>
+                    <p class="profile-title">OB-GYN · Reproductive Endocrinology</p>
+                    <div class="profile-badges">
+                        <span class="dr-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Board Certified
+                        </span>
+                        <span class="dr-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                            12 Active Patients
+                        </span>
+                        <span class="dr-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            9 yrs Experience
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-hero-right">
+                <button class="btn-secondary" id="btn-edit-profile">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    Edit Profile
+                </button>
+                <button class="btn-secondary" id="btn-settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    Settings
+                </button>
+            </div>
+        </section>
+
+        <div class="doctor-grid">
+            <!-- Today's Schedule -->
+            <section class="glass-card" id="today-schedule">
+                <div class="section-header">
+                    <h2>Today's Schedule</h2>
+                    <span class="badge-day">Oct 28, 2025</span>
+                </div>
+                <div class="schedule-list">
+                    <div class="schedule-item completed">
+                        <div class="schedule-time">9:00 AM</div>
+                        <div class="schedule-info">
+                            <h3>Emily Carter</h3>
+                            <p>Initial consultation · Cycle irregularity</p>
+                        </div>
+                        <span class="schedule-status done">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                    </div>
+                    <div class="schedule-item completed">
+                        <div class="schedule-time">10:30 AM</div>
+                        <div class="schedule-info">
+                            <h3>Priya Sharma</h3>
+                            <p>Follow-up · PCOS management review</p>
+                        </div>
+                        <span class="schedule-status done">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                    </div>
+                    <div class="schedule-item active-appointment">
+                        <div class="schedule-time">11:45 AM</div>
+                        <div class="schedule-info">
+                            <h3>Sarah J. Jenkins</h3>
+                            <p>Routine follow-up · Cycle monitoring CD16</p>
+                        </div>
+                        <span class="schedule-status in-progress">Now</span>
+                    </div>
+                    <div class="schedule-item upcoming">
+                        <div class="schedule-time">2:00 PM</div>
+                        <div class="schedule-info">
+                            <h3>Maria Rodriguez</h3>
+                            <p>Pre-conception counseling</p>
+                        </div>
+                        <span class="schedule-status pending">Upcoming</span>
+                    </div>
+                    <div class="schedule-item upcoming">
+                        <div class="schedule-time">3:15 PM</div>
+                        <div class="schedule-info">
+                            <h3>Hannah Lee</h3>
+                            <p>6-month assessment · Endometriosis tracking</p>
+                        </div>
+                        <span class="schedule-status pending">Upcoming</span>
+                    </div>
+                    <div class="schedule-item upcoming">
+                        <div class="schedule-time">4:30 PM</div>
+                        <div class="schedule-info">
+                            <h3>Aisha Johnson</h3>
+                            <p>Lab results review · Hormonal panel</p>
+                        </div>
+                        <span class="schedule-status pending">Upcoming</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patient Roster -->
+            <section class="glass-card" id="patient-roster">
+                <div class="section-header">
+                    <h2>Active Patients</h2>
+                    <div class="search-box compact">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                        <input type="text" placeholder="Search patients..." class="search-input" id="patient-search">
+                    </div>
+                </div>
+                <div class="patient-roster-list" id="patient-list">
+                    <a href="index.html" class="roster-item active-patient">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--follicular), var(--luteal-soft));">SJ</div>
+                        <div class="roster-info">
+                            <h3>Sarah J. Jenkins</h3>
+                            <span>Age 30 · CD 16 · Ovulation</span>
+                        </div>
+                        <span class="phase-badge ovulation">Active Now</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, #F59E0B, #E8736A);">EC</div>
+                        <div class="roster-info">
+                            <h3>Emily Carter</h3>
+                            <span>Age 26 · CD 8 · Follicular</span>
+                        </div>
+                        <span class="phase-badge follicular">Follicular</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--luteal), var(--menstrual-soft));">PS</div>
+                        <div class="roster-info">
+                            <h3>Priya Sharma</h3>
+                            <span>Age 32 · CD 22 · Luteal</span>
+                        </div>
+                        <span class="phase-badge luteal">Luteal</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--menstrual), var(--ovulation-soft));">MR</div>
+                        <div class="roster-info">
+                            <h3>Maria Rodriguez</h3>
+                            <span>Age 28 · CD 3 · Menstrual</span>
+                        </div>
+                        <span class="phase-badge menstrual">Menstrual</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--follicular-soft), var(--follicular));">HL</div>
+                        <div class="roster-info">
+                            <h3>Hannah Lee</h3>
+                            <span>Age 34 · CD 10 · Follicular</span>
+                        </div>
+                        <span class="phase-badge follicular">Follicular</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--luteal-soft), var(--info));">AJ</div>
+                        <div class="roster-info">
+                            <h3>Aisha Johnson</h3>
+                            <span>Age 29 · CD 18 · Luteal</span>
+                        </div>
+                        <span class="phase-badge luteal">Luteal</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--ovulation), var(--warning));">LT</div>
+                        <div class="roster-info">
+                            <h3>Lisa Thompson</h3>
+                            <span>Age 31 · CD 15 · Ovulation</span>
+                        </div>
+                        <span class="phase-badge ovulation">Ovulation</span>
+                    </a>
+                    <a href="#" class="roster-item">
+                        <div class="roster-avatar" style="background: linear-gradient(135deg, var(--positive), var(--follicular));">KW</div>
+                        <div class="roster-info">
+                            <h3>Karen Wilson</h3>
+                            <span>Age 35 · CD 25 · Luteal</span>
+                        </div>
+                        <span class="phase-badge luteal">Luteal</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="glass-card" id="doctor-stats">
+                <div class="section-header">
+                    <h2>Practice Overview</h2>
+                    <span class="section-subtitle">This month</span>
+                </div>
+                <div class="dr-stats-grid">
+                    <div class="dr-stat-card">
+                        <div class="dr-stat-icon" style="background: var(--info-bg); color: var(--info);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="dr-stat-info">
+                            <span class="dr-stat-value">12</span>
+                            <span class="dr-stat-label">Active Patients</span>
+                        </div>
+                    </div>
+                    <div class="dr-stat-card">
+                        <div class="dr-stat-icon" style="background: var(--positive-bg); color: var(--positive);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="dr-stat-info">
+                            <span class="dr-stat-value">28</span>
+                            <span class="dr-stat-label">Visits This Month</span>
+                        </div>
+                    </div>
+                    <div class="dr-stat-card">
+                        <div class="dr-stat-icon" style="background: var(--warning-bg); color: var(--warning);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="dr-stat-info">
+                            <span class="dr-stat-value">2</span>
+                            <span class="dr-stat-label">Flagged Cycles</span>
+                        </div>
+                    </div>
+                    <div class="dr-stat-card">
+                        <div class="dr-stat-icon" style="background: var(--luteal-bg); color: var(--luteal);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="dr-stat-info">
+                            <span class="dr-stat-value">6</span>
+                            <span class="dr-stat-label">Pending Reports</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Alerts & Notifications -->
+            <section class="glass-card" id="alerts-section">
+                <div class="section-header">
+                    <h2>Alerts & Notifications</h2>
+                    <button class="btn-text" id="btn-mark-all-read">Mark all read</button>
+                </div>
+                <div class="alerts-list">
+                    <div class="alert-item unread">
+                        <div class="alert-icon urgent">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="alert-content">
+                            <strong>Lisa Thompson — Anovulatory Cycle Suspected</strong>
+                            <p>No BBT shift detected by CD 20. Monophasic pattern for cycle #4. Consider follow-up.</p>
+                            <span class="alert-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="alert-item unread">
+                        <div class="alert-icon info">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </div>
+                        <div class="alert-content">
+                            <strong>Sarah J. Jenkins — LH Surge Confirmed</strong>
+                            <p>Positive LH test recorded on CD 15. BBT nadir aligns. Ovulation window active.</p>
+                            <span class="alert-time">3 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="alert-item">
+                        <div class="alert-icon success">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="alert-content">
+                            <strong>Priya Sharma — Lab Results Available</strong>
+                            <p>Hormonal panel results uploaded. All markers within normal range.</p>
+                            <span class="alert-time">Yesterday</span>
+                        </div>
+                    </div>
+                    <div class="alert-item">
+                        <div class="alert-icon info">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </div>
+                        <div class="alert-content">
+                            <strong>Monthly Report Ready</strong>
+                            <p>October 2025 patient summary report has been generated and is ready for review.</p>
+                            <span class="alert-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Settings -->
+            <section class="glass-card" id="quick-settings">
+                <div class="section-header">
+                    <h2>Dashboard Preferences</h2>
+                </div>
+                <div class="settings-list">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Auto-Flag Anovulatory Cycles</h3>
+                            <p>Automatically flag cycles with no BBT shift by CD 21</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>LH Surge Notifications</h3>
+                            <p>Receive alerts when patient logs a positive LH test</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Pain Threshold Alerts</h3>
+                            <p>Alert when pain level exceeds 3/5 for 3+ consecutive days</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>AI Clinical Insights</h3>
+                            <p>Enable AI-assisted pattern detection and recommendations</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Dark Mode</h3>
+                            <p>Switch dashboard to dark color scheme</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Patient search filter
+        document.addEventListener('DOMContentLoaded', () => {
+            const search = document.getElementById('patient-search');
+            if (search) {
+                search.addEventListener('input', (e) => {
+                    const q = e.target.value.toLowerCase();
+                    document.querySelectorAll('.roster-item').forEach(item => {
+                        item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+                    });
+                });
+            }
+
+            // Mark all read
+            const markBtn = document.getElementById('btn-mark-all-read');
+            if (markBtn) {
+                markBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.alert-item.unread').forEach(a => a.classList.remove('unread'));
+                    markBtn.textContent = 'All read ✓';
+                    markBtn.style.color = 'var(--positive)';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleView — Cycle History</title>
+    <meta name="description" content="Complete menstrual cycle history, visit timeline, and historical comparison for clinical review.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav id="main-nav" class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo" style="text-decoration:none">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="13" stroke="url(#lg2)" stroke-width="2"/>
+                    <circle cx="14" cy="14" r="6" fill="url(#lg2)"/>
+                    <defs><linearGradient id="lg2" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#E8736A"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+                </svg>
+                <span class="logo-text">CycleView</span>
+            </a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-tab">Overview</a>
+            <a href="analytics.html" class="nav-tab">Analytics</a>
+            <a href="history.html" class="nav-tab active">History</a>
+        </div>
+        <div class="nav-right">
+            <button class="icon-btn" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="icon-btn" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-dot"></span>
+            </button>
+            <a href="doctor.html" class="avatar-small"><span>DR</span></a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <!-- Page Header -->
+        <div class="page-title-bar">
+            <div>
+                <h1 class="page-title">Cycle History</h1>
+                <p class="page-subtitle">Complete cycle records for Sarah J. Jenkins</p>
+            </div>
+            <div class="page-actions">
+                <div class="search-box" id="history-search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" placeholder="Search notes or dates..." class="search-input">
+                </div>
+                <button class="btn-secondary" id="btn-export-history">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export
+                </button>
+            </div>
+        </div>
+
+        <!-- Cycle History Table -->
+        <section class="glass-card" id="history-table-section">
+            <div class="section-header">
+                <h2>All Recorded Cycles</h2>
+                <span class="badge-day">12 Cycles</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table" id="cycles-table">
+                    <thead>
+                        <tr>
+                            <th>Cycle</th>
+                            <th>Start Date</th>
+                            <th>Length</th>
+                            <th>Period</th>
+                            <th>Ovulation</th>
+                            <th>LH Surge</th>
+                            <th>Luteal Phase</th>
+                            <th>Peak Pain</th>
+                            <th>Notes</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-current">
+                            <td><span class="cycle-num">#12</span></td>
+                            <td><strong>Oct 21, 2025</strong></td>
+                            <td>28 days</td>
+                            <td>5 days</td>
+                            <td><span class="phase-badge ovulation">CD 15</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 15</span></td>
+                            <td>13 days</td>
+                            <td><span class="pain-level moderate">3/5</span></td>
+                            <td class="note-cell">EWCM observed CD 14–16</td>
+                            <td><span class="status-badge active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#11</span></td>
+                            <td>Sep 23, 2025</td>
+                            <td>28 days</td>
+                            <td>5 days</td>
+                            <td><span class="phase-badge ovulation">CD 14</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 14</span></td>
+                            <td>14 days</td>
+                            <td><span class="pain-level mild">2/5</span></td>
+                            <td class="note-cell">Normal cycle</td>
+                            <td><span class="status-badge complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#10</span></td>
+                            <td>Aug 26, 2025</td>
+                            <td>29 days</td>
+                            <td>4 days</td>
+                            <td><span class="phase-badge ovulation">CD 15</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 15</span></td>
+                            <td>14 days</td>
+                            <td><span class="pain-level mild">2/5</span></td>
+                            <td class="note-cell">Mild headache CD 1–2</td>
+                            <td><span class="status-badge complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#9</span></td>
+                            <td>Jul 28, 2025</td>
+                            <td>29 days</td>
+                            <td>5 days</td>
+                            <td><span class="phase-badge ovulation">CD 16</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 15</span></td>
+                            <td>13 days</td>
+                            <td><span class="pain-level moderate">3/5</span></td>
+                            <td class="note-cell">Cramping CD 14–16</td>
+                            <td><span class="status-badge complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#8</span></td>
+                            <td>Jun 29, 2025</td>
+                            <td>27 days</td>
+                            <td>5 days</td>
+                            <td><span class="phase-badge ovulation">CD 13</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 13</span></td>
+                            <td>14 days</td>
+                            <td><span class="pain-level mild">2/5</span></td>
+                            <td class="note-cell">Shorter cycle</td>
+                            <td><span class="status-badge complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#7</span></td>
+                            <td>Jun 2, 2025</td>
+                            <td>31 days</td>
+                            <td>6 days</td>
+                            <td><span class="phase-badge ovulation">CD 17</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 16</span></td>
+                            <td>14 days</td>
+                            <td><span class="pain-level high">4/5</span></td>
+                            <td class="note-cell">Heavy flow, possible stress</td>
+                            <td><span class="status-badge flagged">Flagged</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#6</span></td>
+                            <td>May 4, 2025</td>
+                            <td>29 days</td>
+                            <td>5 days</td>
+                            <td><span class="phase-badge ovulation">CD 15</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 14</span></td>
+                            <td>14 days</td>
+                            <td><span class="pain-level moderate">3/5</span></td>
+                            <td class="note-cell">Normal</td>
+                            <td><span class="status-badge complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="cycle-num">#5</span></td>
+                            <td>Apr 5, 2025</td>
+                            <td>28 days</td>
+                            <td>5 days</td>
+                            <td><span class="phase-badge ovulation">CD 14</span></td>
+                            <td><span class="lh-result positive"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> CD 14</span></td>
+                            <td>14 days</td>
+                            <td><span class="pain-level mild">2/5</span></td>
+                            <td class="note-cell">Textbook cycle</td>
+                            <td><span class="status-badge complete">Complete</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Visit Timeline -->
+        <section class="glass-card" id="visit-timeline-section">
+            <div class="section-header">
+                <h2>Clinical Visit Timeline</h2>
+                <span class="section-subtitle">Consultation & follow-up records</span>
+            </div>
+            <div class="timeline" id="visit-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker current-visit"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 28, 2025 · <strong>Today</strong></div>
+                        <h3>Routine Follow-up — Cycle Monitoring</h3>
+                        <p>Reviewed current cycle data (CD16). BBT shift confirmed, LH surge on CD15. All markers consistent with regular ovulatory cycle. Discussed recurring mild pain during ovulation window.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Routine</span>
+                            <span class="timeline-tag">Ovulation Check</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 5, 2025</div>
+                        <h3>Cycle Review — 6-Month Assessment</h3>
+                        <p>Completed 6-month cycle regularity assessment. Cycle length stable (27–31 days). BBT patterns biphasic with consistent coverline at 36.7°C. No hormonal concerns. Continue current monitoring plan.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Assessment</span>
+                            <span class="timeline-tag">Regular</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker flagged-visit"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 18, 2025</div>
+                        <h3>Unscheduled Visit — Cycle #7 Review</h3>
+                        <p>Patient reported heavier-than-normal flow and pain level 4/5 during cycle #7. Extended period (6 days) and delayed ovulation (CD17). Discussed stress management. Ordered basic hormonal panel as precaution.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag warning-tag">Flagged</span>
+                            <span class="timeline-tag">Pain Review</span>
+                            <span class="timeline-tag">Lab Ordered</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 25, 2025</div>
+                        <h3>Lab Results — Hormonal Panel</h3>
+                        <p>All results within normal range. FSH: 6.8 mIU/mL, LH: 5.2 mIU/mL, Estradiol: 38 pg/mL, Progesterone: 0.8 ng/mL (follicular phase). TSH: 2.1 mIU/L. No abnormalities detected.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag positive-tag">Normal</span>
+                            <span class="timeline-tag">Lab Results</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Apr 15, 2025</div>
+                        <h3>Initial Consultation — Cycle Tracking Setup</h3>
+                        <p>New patient intake. Set up comprehensive cycle tracking: BBT, LH surge, pain, energy, bleeding, cervical mucus. Patient goal: fertility awareness and regularity monitoring. History: G2P1, no prior complications.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">New Patient</span>
+                            <span class="timeline-tag">Setup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinical Notes -->
+        <section class="glass-card" id="clinical-notes-section">
+            <div class="section-header">
+                <h2>Clinical Notes</h2>
+                <button class="btn-primary" id="btn-add-note">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Add Note
+                </button>
+            </div>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <div class="note-header">
+                        <span class="note-date">Oct 28, 2025</span>
+                        <span class="note-author">Dr. Rebecca Hartley</span>
+                    </div>
+                    <p class="note-body">Patient presenting well. Confirmed ovulation via BBT + LH correlation. Recommend continued tracking for 2 more cycles before pre-conception counseling. Mittelschmerz discussion — reassured patient that recurring mild ovulatory pain is typically benign.</p>
+                    <div class="note-footer">
+                        <span class="timeline-tag">Follow-up: Dec 2025</span>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <div class="note-header">
+                        <span class="note-date">Jun 18, 2025</span>
+                        <span class="note-author">Dr. Rebecca Hartley</span>
+                    </div>
+                    <p class="note-body">Cycle #7 anomaly — longer duration (31d), higher pain (4/5), heavier flow. Patient reports increased work stress. Ordered hormonal panel. Advised stress reduction, adequate sleep, and hydration. Monitor next 2 cycles for pattern.</p>
+                    <div class="note-footer">
+                        <span class="timeline-tag warning-tag">Attention</span>
+                        <span class="timeline-tag">Lab Ordered</span>
+                    </div>
+                </div>
+                <div class="note-card">
+                    <div class="note-header">
+                        <span class="note-date">Apr 15, 2025</span>
+                        <span class="note-author">Dr. Rebecca Hartley</span>
+                    </div>
+                    <p class="note-body">New patient setup. G2P1, healthy 30F. Initiated CycleView tracking protocol. Patient motivated and tech-literate. Good candidate for digital symptom tracking. Goals: regularity confirmation, future fertility planning.</p>
+                    <div class="note-footer">
+                        <span class="timeline-tag">Initial Visit</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple search filter for history table
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    document.querySelectorAll('#cycles-table tbody tr').forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(query) ? '' : 'none';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

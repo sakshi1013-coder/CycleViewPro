@@ -1,0 +1,908 @@
+/* ============================================
+   CycleView — Pages Neumorphism Theme
+   Analytics, History, Doctor Profile
+   ============================================ */
+
+/* ---------- Page Title Bar ---------- */
+.page-title-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.page-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--navy-900);
+    line-height: 1.3;
+}
+
+.page-subtitle {
+    font-size: var(--text-sm);
+    color: var(--slate-500);
+    margin-top: 2px;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* ============================================
+   BUTTONS — Neumorphic
+   ============================================ */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--ovulation), var(--luteal));
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 3px 3px 8px rgba(163,177,198,0.5), -2px -2px 6px rgba(255,255,255,0.6), 0 2px 12px rgba(224,122,111,0.2);
+}
+
+.btn-primary:hover {
+    box-shadow: 4px 4px 12px rgba(163,177,198,0.5), -3px -3px 8px rgba(255,255,255,0.6), 0 4px 20px rgba(224,122,111,0.3);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    box-shadow: var(--neu-shadow-in), 0 0 8px rgba(224,122,111,0.2);
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--neu-surface);
+    color: var(--navy-700);
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.btn-secondary:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+    box-shadow: var(--neu-shadow-pressed);
+    transform: translateY(0);
+}
+
+.btn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 6px 12px;
+    border: none;
+    background: transparent;
+    color: var(--slate-500);
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-sm);
+}
+
+.btn-text:hover {
+    color: var(--ovulation);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+/* ============================================
+   SEARCH BOX — Neumorphic Inset
+   ============================================ */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--neu-surface);
+    color: var(--slate-400);
+    transition: box-shadow var(--transition-fast);
+    box-shadow: var(--neu-shadow-in-sm);
+}
+
+.search-box:focus-within {
+    box-shadow: var(--neu-shadow-pressed), 0 0 0 2px rgba(224,122,111,0.1);
+}
+
+.search-box.compact {
+    padding: 8px 12px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+    color: var(--navy-800);
+    width: 180px;
+}
+
+.search-input::placeholder {
+    color: var(--slate-400);
+}
+
+/* ============================================
+   KPI CARDS — Neumorphic
+   ============================================ */
+.kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+}
+
+.kpi-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5);
+}
+
+.kpi-icon-wrap {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.kpi-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kpi-label {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--slate-400);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.kpi-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy-900);
+    line-height: 1.2;
+}
+
+.kpi-value small {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--slate-500);
+}
+
+.kpi-change {
+    font-size: var(--text-xs);
+    font-weight: 500;
+}
+
+.kpi-change.positive-change { color: var(--positive); }
+.kpi-change.negative-change { color: var(--danger); }
+.kpi-change.neutral-change { color: var(--slate-400); }
+
+/* ============================================
+   ANALYTICS GRID
+   ============================================ */
+.analytics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+}
+
+.analytics-wide { grid-column: 1 / -1; }
+
+/* Heatmap — Neumorphic Cells */
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(4, 1fr);
+    gap: 6px;
+    margin-top: var(--space-3);
+}
+
+.hm-header {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--slate-500);
+    text-align: center;
+    padding: var(--space-2);
+}
+
+.hm-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--navy-800);
+    display: flex;
+    align-items: center;
+    padding-left: var(--space-2);
+}
+
+.hm-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--navy-800);
+    transition: all var(--transition-fast);
+    min-height: 50px;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.hm-cell:hover {
+    transform: scale(1.06);
+    box-shadow: var(--neu-shadow-out);
+}
+
+.heatmap-note {
+    font-size: var(--text-xs);
+    color: var(--slate-400);
+    margin-top: var(--space-3);
+    text-align: center;
+}
+
+/* Hormone Stats */
+.hormone-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--slate-200);
+}
+
+.hormone-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.hormone-stat-label { font-size: var(--text-xs); color: var(--slate-400); font-weight: 500; }
+.hormone-stat-value { font-size: var(--text-lg); font-weight: 700; color: var(--navy-900); }
+.hormone-stat-value.highlight-coral { color: var(--ovulation); }
+
+/* Prediction Cards — Neumorphic */
+.prediction-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.prediction-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: var(--neu-surface);
+    border-radius: var(--radius-lg);
+    border: none;
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.prediction-card:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateX(4px);
+}
+
+.prediction-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.prediction-content { flex: 1; }
+.prediction-content h3 { font-size: var(--text-sm); font-weight: 700; color: var(--navy-900); margin-bottom: 2px; }
+.prediction-value { display: block; font-size: var(--text-lg); font-weight: 700; color: var(--ovulation); margin-bottom: var(--space-1); }
+.prediction-content p { font-size: var(--text-sm); color: var(--slate-500); line-height: 1.5; }
+
+.prediction-confidence {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.prediction-confidence.high { background: var(--positive-bg); color: var(--positive); }
+.prediction-confidence.low-risk { background: var(--follicular-bg); color: var(--follicular); }
+
+/* ============================================
+   DATA TABLE — Neumorphic
+   ============================================ */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 0 calc(-1 * var(--space-6));
+    padding: 0 var(--space-6);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    font-size: var(--text-sm);
+}
+
+.data-table thead th {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-weight: 600;
+    font-size: var(--text-xs);
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.data-table tbody td {
+    padding: var(--space-3) var(--space-4);
+    color: var(--navy-700);
+    vertical-align: middle;
+    white-space: nowrap;
+    background: var(--neu-surface);
+}
+
+.data-table tbody td:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.data-table tbody td:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+
+.data-table tbody tr {
+    transition: all var(--transition-fast);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.data-table tbody tr:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateY(-1px);
+}
+
+.data-table tbody tr.row-current td {
+    background: linear-gradient(135deg, var(--neu-surface), rgba(224,122,111,0.06));
+}
+
+.cycle-num { font-weight: 700; color: var(--navy-900); }
+.note-cell { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--text-xs); color: var(--slate-500); }
+
+.pain-level {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.pain-level.mild { background: var(--positive-bg); color: var(--positive); }
+.pain-level.moderate { background: var(--warning-bg); color: var(--warning); }
+.pain-level.high { background: var(--danger-bg); color: var(--danger); }
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.status-badge.active { background: var(--ovulation-bg); color: var(--ovulation); }
+.status-badge.complete { background: var(--positive-bg); color: var(--positive); }
+.status-badge.flagged { background: var(--warning-bg); color: var(--warning); }
+
+/* ============================================
+   TIMELINE — Neumorphic
+   ============================================ */
+.timeline {
+    position: relative;
+    padding-left: 36px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: var(--slate-200);
+    border-radius: 2px;
+    box-shadow: var(--neu-shadow-in-sm);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: var(--space-8);
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-marker {
+    position: absolute;
+    left: -29px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--neu-surface);
+    border: 3px solid var(--slate-300);
+    z-index: 1;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.timeline-marker.current-visit {
+    background: var(--ovulation);
+    border-color: var(--ovulation);
+    box-shadow: var(--neu-shadow-out-sm), 0 0 12px rgba(224,122,111,0.4);
+    animation: marker-pulse 2s ease-in-out infinite;
+}
+
+.timeline-marker.flagged-visit {
+    background: var(--warning);
+    border-color: var(--warning);
+    box-shadow: var(--neu-shadow-out-sm), 0 0 8px rgba(232,160,64,0.3);
+}
+
+.timeline-content {
+    padding: var(--space-4) var(--space-5);
+    background: var(--neu-surface);
+    border-radius: var(--radius-lg);
+    border: none;
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.timeline-content:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateX(3px);
+}
+
+.timeline-date { font-size: var(--text-xs); color: var(--slate-500); margin-bottom: 4px; }
+.timeline-content h3 { font-size: var(--text-sm); font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-2); }
+.timeline-content p { font-size: var(--text-sm); color: var(--navy-600); line-height: 1.6; margin-bottom: var(--space-2); }
+
+.timeline-tags { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.timeline-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    background: var(--neu-surface);
+    color: var(--navy-600);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.timeline-tag.warning-tag { background: var(--warning-bg); color: var(--warning); }
+.timeline-tag.positive-tag { background: var(--positive-bg); color: var(--positive); }
+
+/* Notes Grid */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-5);
+}
+
+.note-card {
+    padding: var(--space-5);
+    background: var(--neu-surface);
+    border-radius: var(--radius-lg);
+    border: none;
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.note-card:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateY(-2px);
+}
+
+.note-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+.note-date { font-size: var(--text-xs); color: var(--slate-400); font-weight: 500; }
+.note-author { font-size: var(--text-xs); font-weight: 600; color: var(--luteal); }
+.note-body { font-size: var(--text-sm); color: var(--navy-600); line-height: 1.6; margin-bottom: var(--space-3); }
+.note-footer { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+/* ============================================
+   DOCTOR PROFILE — Neumorphic
+   ============================================ */
+.profile-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+    padding: var(--space-8) var(--space-6);
+    background: var(--neu-surface);
+    flex-wrap: wrap;
+}
+
+.profile-hero-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.profile-avatar-large {
+    width: 84px;
+    height: 84px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--ovulation), var(--luteal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out), 0 4px 16px rgba(224,122,111,0.2);
+}
+
+.profile-avatar-large span {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.profile-name { font-size: var(--text-2xl); font-weight: 700; color: var(--navy-900); line-height: 1.3; }
+.profile-title { font-size: var(--text-sm); color: var(--slate-500); margin-top: 2px; }
+
+.profile-badges {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.dr-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: var(--neu-surface);
+    border: none;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--navy-600);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.profile-hero-right { display: flex; gap: var(--space-3); }
+
+.active-avatar {
+    box-shadow: var(--neu-shadow-out-sm), 0 0 0 3px var(--neu-bg), 0 0 0 5px var(--ovulation);
+}
+
+/* Doctor Grid */
+.doctor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+}
+
+/* Schedule — Neumorphic */
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.schedule-item:hover { box-shadow: var(--neu-shadow-out-sm); }
+
+.schedule-item.active-appointment {
+    background: linear-gradient(135deg, var(--neu-surface), rgba(224,122,111,0.08));
+    box-shadow: var(--neu-shadow-out-sm), 0 0 12px rgba(224,122,111,0.1);
+    border-radius: var(--radius-md);
+}
+
+.schedule-item.completed { opacity: 0.5; }
+
+.schedule-time {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--navy-800);
+    min-width: 76px;
+    white-space: nowrap;
+}
+
+.schedule-info { flex: 1; min-width: 0; }
+.schedule-info h3 { font-size: var(--text-sm); font-weight: 600; color: var(--navy-900); }
+.schedule-info p { font-size: var(--text-xs); color: var(--slate-500); }
+
+.schedule-status {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.schedule-status.done {
+    background: var(--positive-bg);
+    color: var(--positive);
+    display: flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%; padding: 0;
+}
+
+.schedule-status.in-progress {
+    background: var(--ovulation);
+    color: var(--white);
+    box-shadow: var(--neu-shadow-out-sm), 0 0 10px rgba(224,122,111,0.3);
+}
+
+.schedule-status.pending {
+    background: var(--neu-surface);
+    color: var(--slate-500);
+}
+
+/* Patient Roster — Neumorphic */
+.patient-roster-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+.roster-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-fast);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.roster-item:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateX(4px);
+}
+
+.roster-item.active-patient {
+    background: linear-gradient(135deg, var(--neu-surface), rgba(224,122,111,0.06));
+    box-shadow: var(--neu-shadow-out-sm), 0 0 10px rgba(224,122,111,0.1);
+}
+
+.roster-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--white);
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.roster-info { flex: 1; min-width: 0; }
+.roster-info h3 { font-size: var(--text-sm); font-weight: 600; color: var(--navy-900); }
+.roster-info span { font-size: var(--text-xs); color: var(--slate-500); }
+
+/* Doctor Stats — Neumorphic */
+.dr-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.dr-stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--neu-surface);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.dr-stat-card:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateY(-1px);
+}
+
+.dr-stat-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.dr-stat-info { display: flex; flex-direction: column; }
+.dr-stat-value { font-size: var(--text-xl); font-weight: 700; color: var(--navy-900); }
+.dr-stat-label { font-size: var(--text-xs); color: var(--slate-500); }
+
+/* Alerts — Neumorphic */
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    border-left: 4px solid transparent;
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.alert-item:hover {
+    box-shadow: var(--neu-shadow-out);
+    transform: translateX(3px);
+}
+
+.alert-item.unread {
+    background: linear-gradient(135deg, var(--neu-surface), rgba(224,122,111,0.04));
+    border-left-color: var(--ovulation);
+}
+
+.alert-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.alert-icon.urgent { background: var(--danger-bg); color: var(--danger); }
+.alert-icon.info { background: var(--info-bg); color: var(--info); }
+.alert-icon.success { background: var(--positive-bg); color: var(--positive); }
+
+.alert-content { flex: 1; }
+.alert-content strong { display: block; font-size: var(--text-sm); font-weight: 600; color: var(--navy-900); margin-bottom: 2px; }
+.alert-content p { font-size: var(--text-xs); color: var(--slate-500); line-height: 1.5; margin-bottom: 4px; }
+.alert-time { font-size: var(--text-xs); color: var(--slate-400); }
+
+/* Settings — Neumorphic */
+.settings-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--slate-200);
+}
+
+.setting-item:last-child { border-bottom: none; }
+.setting-info h3 { font-size: var(--text-sm); font-weight: 600; color: var(--navy-900); }
+.setting-info p { font-size: var(--text-xs); color: var(--slate-400); margin-top: 2px; }
+
+/* Toggle Switch — Neumorphic */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--neu-surface);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-in-sm);
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background: var(--neu-surface);
+    border-radius: 50%;
+    transition: all var(--transition-base);
+    box-shadow: var(--neu-shadow-out-sm);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: linear-gradient(135deg, var(--ovulation), var(--luteal));
+    box-shadow: var(--neu-shadow-in-sm), 0 0 10px rgba(224,122,111,0.15);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(22px);
+    background: var(--white);
+    box-shadow: 2px 2px 5px rgba(163,177,198,0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1200px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .analytics-grid, .doctor-grid { grid-template-columns: 1fr; }
+    .analytics-wide { grid-column: 1; }
+}
+
+@media (max-width: 768px) {
+    .kpi-row { grid-template-columns: 1fr; }
+    .page-title-bar { flex-direction: column; }
+    .page-actions { width: 100%; }
+    .profile-hero-left { flex-direction: column; text-align: center; }
+    .profile-hero-right { width: 100%; justify-content: center; }
+    .profile-badges { justify-content: center; }
+    .hormone-stats { grid-template-columns: repeat(2, 1fr); }
+    .dr-stats-grid { grid-template-columns: 1fr; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .prediction-card { flex-direction: column; }
+    .heatmap-grid { grid-template-columns: 60px repeat(4, 1fr); }
+}
